@@ -19,6 +19,7 @@ public class JavaApplication1 {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner e = new Scanner(System.in);
+        new LeerXml().cargarXml();
         Matriz m = new Matriz(4, 4);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {

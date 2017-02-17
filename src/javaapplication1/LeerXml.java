@@ -33,22 +33,28 @@ public class LeerXml {
             Element rootNode = document.getRootElement();
 
             //Se obtiene la lista de hijos de la raiz 'tables'
-            List list = rootNode.getChildren("tabla");
-
+            List list = rootNode.getChildren("dimension");
+            List list_dobles = rootNode.getChildren("dobles");
+            List list_triples = rootNode.getChildren("triples");
+            List list_diccionario = rootNode.getChildren("diccionario");
             //Se recorre la lista de hijos de 'tables'
             for (int i = 0; i < list.size(); i++) {
                 //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list.get(i);
-
+                System.out.println("Dimension: "+tabla.getText());
+            }
+            for (int i = 0; i < list_dobles.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list_dobles.get(i);
                 //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
-                String nombreTabla = tabla.getAttributeValue("nombre");
+                //String nombreTabla = tabla.getAttributeValue("nombre");
 
-                System.out.println("Tabla: " + nombreTabla);
+                //System.out.println("Tabla: " + nombreTabla);
 
                 //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
 
-                System.out.println("\tNombre\t\tTipo\t\tValor");
+                //System.out.println("\tNombre\t\tTipo\t\tValor");
 
                 //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
@@ -57,15 +63,62 @@ public class LeerXml {
 
                     //Se obtienen los valores que estan entre los tags '<campo></campo>'
                     //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
-                    String nombre = campo.getChildTextTrim("nombre");
+                    String x = campo.getChildTextTrim("x");
 
                     //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
-                    String tipo = campo.getChildTextTrim("tipo");
+                    String y = campo.getChildTextTrim("y");
 
-                    //Se obtiene el valor que esta entre los tags '<valor></valor>'
-                    String valor = campo.getChildTextTrim("valor");
+                    System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
+                }
+            }
+            for (int i = 0; i < list_triples.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list_triples.get(i);
+                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
+                //String nombreTabla = tabla.getAttributeValue("nombre");
 
-                    System.out.println("\t" + nombre + "\t\t" + tipo + "\t\t" + valor);
+                //System.out.println("Tabla: " + nombreTabla);
+
+                //Se obtiene la lista de hijos del tag 'tabla'
+                List lista_campos = tabla.getChildren();
+
+                //System.out.println("\tNombre\t\tTipo\t\tValor");
+
+                //Se recorre la lista de campos
+                for (int j = 0; j < lista_campos.size(); j++) {
+                    //Se obtiene el elemento 'campo'
+                    Element campo = (Element) lista_campos.get(j);
+
+                    //Se obtienen los valores que estan entre los tags '<campo></campo>'
+                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
+                    String x = campo.getChildTextTrim("x");
+
+                    //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
+                    String y = campo.getChildTextTrim("y");
+
+                    System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
+                }
+            }
+            
+            for (int i = 0; i < list_diccionario.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list_diccionario.get(i);
+                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
+                //String nombreTabla = tabla.getAttributeValue("nombre");
+
+                //System.out.println("Tabla: " + nombreTabla);
+
+                //Se obtiene la lista de hijos del tag 'tabla'
+                List lista_campos = tabla.getChildren();
+
+                //System.out.println("\tNombre\t\tTipo\t\tValor");
+
+                //Se recorre la lista de campos
+                for (int j = 0; j < lista_campos.size(); j++) {
+                    //Se obtiene el elemento 'campo'
+                    Element campo = (Element) lista_campos.get(j);
+                    System.out.println("Palabra: " + 
+                    campo.getText());
                 }
             }
         } catch (IOException io) {
