@@ -9,27 +9,19 @@ package javaapplication1;
  *
  * @author cech
  */
-public class ListaSimple {
+public class Cola {
 
     NodoLista primerNodo;
     NodoLista ultimoNodo;
     String nombre;
 
-    public ListaSimple() {
+    public Cola() {
         this("lista");
     }
 
-    public ListaSimple(String n) {
+    public Cola(String n) {
         nombre = n;
         primerNodo = ultimoNodo = null;
-    }
-
-    public void insertarAlFrente(Object ei) {
-        if (estaVacia()) {
-            primerNodo = ultimoNodo = new NodoLista(ei);
-        } else {
-            primerNodo = new NodoLista(ei, primerNodo);
-        }
     }
 
     public void insertarAlFinal(Object ei) {
