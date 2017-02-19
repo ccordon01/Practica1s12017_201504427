@@ -9,17 +9,17 @@ package javaapplication1;
  *
  * @author cech
  */
-public class ListaSimple {
+public class ListaCola {
 
     NodoLista primerNodo;
     NodoLista ultimoNodo;
     String nombre;
 
-    public ListaSimple() {
+    public ListaCola() {
         this("lista");
     }
 
-    public ListaSimple(String n) {
+    public ListaCola(String n) {
         nombre = n;
         primerNodo = ultimoNodo = null;
     }
