@@ -16,7 +16,7 @@ public class Cola {
     String nombre;
 
     public Cola() {
-        this("lista");
+        this("cola");
     }
 
     public Cola(String n) {

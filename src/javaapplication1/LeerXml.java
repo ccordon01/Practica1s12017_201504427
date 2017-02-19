@@ -21,6 +21,9 @@ import org.jdom2.input.SAXBuilder;
  */
 public class LeerXml {
 
+    public int dimension = 0;
+    public Matriz m = null;
+    public ListaSimple diccionario = new ListaSimple();
     public void cargarXml() {
         //Se crea un SAXBuilder para poder parsear el archivo
         SAXBuilder builder = new SAXBuilder();
@@ -41,7 +44,9 @@ public class LeerXml {
             for (int i = 0; i < list.size(); i++) {
                 //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list.get(i);
-                System.out.println("Dimension: "+tabla.getText());
+                System.out.println("Dimension: " + tabla.getText());
+                dimension = Integer.parseInt(tabla.getText());
+                m = new Matriz(dimension, dimension);
             }
             for (int i = 0; i < list_dobles.size(); i++) {
                 //Se obtiene el elemento 'tabla'
@@ -50,12 +55,10 @@ public class LeerXml {
                 //String nombreTabla = tabla.getAttributeValue("nombre");
 
                 //System.out.println("Tabla: " + nombreTabla);
-
                 //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
 
                 //System.out.println("\tNombre\t\tTipo\t\tValor");
-
                 //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
                     //Se obtiene el elemento 'campo'
@@ -67,8 +70,8 @@ public class LeerXml {
 
                     //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
                     String y = campo.getChildTextTrim("y");
-
-                    System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
+                    m.item(Integer.parseInt(x) -1, Integer.parseInt(y) -1).datos = 2;
+                    System.out.println("Puntos Dobles en la posicion X:" + x + " Y: " + y);
                 }
             }
             for (int i = 0; i < list_triples.size(); i++) {
@@ -78,12 +81,10 @@ public class LeerXml {
                 //String nombreTabla = tabla.getAttributeValue("nombre");
 
                 //System.out.println("Tabla: " + nombreTabla);
-
                 //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
 
                 //System.out.println("\tNombre\t\tTipo\t\tValor");
-
                 //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
                     //Se obtiene el elemento 'campo'
@@ -95,11 +96,11 @@ public class LeerXml {
 
                     //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
                     String y = campo.getChildTextTrim("y");
-
-                    System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
+                    m.item(Integer.parseInt(x) -1, Integer.parseInt(y) -1).datos = 3;
+                    System.out.println("Puntos Triples en la posicion X:" + x + " Y: " + y);
                 }
             }
-            
+
             for (int i = 0; i < list_diccionario.size(); i++) {
                 //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list_diccionario.get(i);
@@ -107,18 +108,16 @@ public class LeerXml {
                 //String nombreTabla = tabla.getAttributeValue("nombre");
 
                 //System.out.println("Tabla: " + nombreTabla);
-
                 //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
 
                 //System.out.println("\tNombre\t\tTipo\t\tValor");
-
                 //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
                     //Se obtiene el elemento 'campo'
                     Element campo = (Element) lista_campos.get(j);
-                    System.out.println("Palabra: " + 
-                    campo.getText());
+                    System.out.println("Palabra: "+ campo.getText() + " tamano lista " + diccionario.getsize()) ;
+                    diccionario.insertarAlFinal(campo.getText());
                 }
             }
         } catch (IOException io) {

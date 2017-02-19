@@ -27,6 +27,9 @@ public class Matriz {
             System.out.println("limites no permitidos");
         }
     }
+    public Matriz() {
+        
+    }
 
     private void asignacion_horizontal1(NodoMatriz actual) {
         if (contador != (x - 1)) {

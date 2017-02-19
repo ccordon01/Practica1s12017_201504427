@@ -58,7 +58,21 @@ public class ListaSimple {
 
         return primerNodo == null;
     }
-
+    public String nodoPosicion(int posicion) {
+        String palabra= null;
+        if (!estaVacia()) {
+        NodoLista temp = primerNodo;
+            int c = -1;
+            //System.out.println(" ");
+                do {
+                    palabra = temp.datos.toString();
+                    temp = temp.siguienteNodo;
+                    c++;
+                } while (posicion != c);
+            
+        }
+        return palabra;
+    }
     public void imprimir() {
         if (estaVacia()) {
             System.out.printf("%s vacia\n", nombre);
@@ -101,13 +115,15 @@ public class ListaSimple {
         NodoLista actual = primerNodo;
         int c = 0;
         //System.out.println(" ");
-        do {
+        if (primerNodo!=null) {
+            do {
             //7System.out.println("Lista: "+ c);
             //System.out.println(actual.lista.nombre);
             //actual.lista.imprimir();
             actual = actual.siguienteNodo;
             c++;
         } while (actual != null);
+        }
         return c;
     }
 }

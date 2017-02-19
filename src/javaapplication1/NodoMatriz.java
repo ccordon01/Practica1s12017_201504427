@@ -25,7 +25,7 @@ public class NodoMatriz {
         inferiorNodo = null;
     }
     NodoMatriz() {
-        this.datos = null;
+        this.datos = 1;
         siguienteNodo = null;
         superiorNodo = null;
         anteriorNodo = null;
@@ -37,6 +37,10 @@ public class NodoMatriz {
     }
     public NodoMatriz(NodoMatriz siguienteNodo) {
         this.siguienteNodo = siguienteNodo;
+    }
+
+    public void setDatos(Object datos) {
+        this.datos = datos;
     }
     Object obtenerObject() {
         return datos;  // devuelve el objeto Object en este nodo  
