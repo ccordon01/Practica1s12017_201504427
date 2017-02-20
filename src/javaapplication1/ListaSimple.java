@@ -74,7 +74,22 @@ public class ListaSimple {
         }
         return palabra;
     }
+    
+    public Object nodoPosicionO(int posicion) {
+        Object palabra = null;
+        if (!estaVacia()) {
+            NodoLista temp = primerNodo;
+            int c = -1;
+            //System.out.println(" ");
+            do {
+                palabra = temp.datos;
+                temp = temp.siguienteNodo;
+                c++;
+            } while (posicion != c);
 
+        }
+        return palabra;
+    }
     public String nodoPosicionKill(int posicion) {
         String palabra = null;
         if (!estaVacia()) {

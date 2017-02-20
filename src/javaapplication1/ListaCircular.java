@@ -24,7 +24,7 @@ public class ListaCircular {
     }
 
     public void insertarAlFinal(Object ei) {
-        NodoLista nuevo= new NodoLista(ei);
+        NodoLista nuevo = new NodoLista(ei);
         if (estaVacia()) {
             primerNodo = nuevo;
             ultimoNodo = nuevo;
@@ -39,20 +39,17 @@ public class ListaCircular {
 
     public Jugadores nodoPosicion(int posicion) {
         NodoLista temp = primerNodo;
-        Jugadores jugador = (Jugadores) primerNodo.datos;
-        if (!estaVacia()) {
-            int c = 0;
-            //System.out.println(" ");
-            do {
-                jugador = (Jugadores) temp.datos;
-                if (temp.siguienteNodo != null) {
-                    temp = temp.siguienteNodo;
-                }
-                c++;
-            } while (posicion != c);
+        Jugadores jugador = (Jugadores) temp.datos;
+        if (posicion == 0) {
+            return jugador;
+        } else {
+            for (int i = 0; i < posicion; i++) {
+                temp = temp.siguienteNodo;
+            }
+            jugador = (Jugadores) temp.datos;
 
+            return jugador;
         }
-        return jugador;
     }
 
     public int getsize() {
@@ -68,11 +65,11 @@ public class ListaCircular {
         Jugadores jugador = null;
         for (int i = 0; i < tam; i++) {
             jugador = (Jugadores) temp.datos;
-            System.out.println(jugador.getNombre_usuario()+" = "+user);
+            System.out.println(jugador.getNombre_usuario() + " = " + user);
             if (jugador.getNombre_usuario().equalsIgnoreCase(user)) {
                 return false;
             }
-            temp= temp.siguienteNodo;
+            temp = temp.siguienteNodo;
         }
         return true;
     }

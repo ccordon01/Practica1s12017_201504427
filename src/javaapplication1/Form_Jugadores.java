@@ -20,6 +20,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
     ListaSimple letras = new ListaSimple();
     ListaCola letras_cola = new ListaCola();
     int dim;
+
     /**
      * Creates new form Form_Jugadores
      */
@@ -219,26 +220,26 @@ public class Form_Jugadores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuario Creado");
             lista_jugadores.insertarAlFinal(gamer);
         } else {
-            if (lista_jugadores.primerNodo.siguienteNodo==null) {
+            if (lista_jugadores.primerNodo.siguienteNodo == null) {
                 System.out.println("si null");
             }
-            if (lista_jugadores.primerNodo!=null) {
+            if (lista_jugadores.primerNodo != null) {
                 System.out.println("ño");
             }
-            if (lista_jugadores.ultimoNodo!=null) {
+            if (lista_jugadores.ultimoNodo != null) {
                 System.out.println("ño ul");
                 Jugadores temp_j = (Jugadores) lista_jugadores.ultimoNodo.datos;
-                System.out.println("en ultimo esta "+temp_j.nombre_usuario);
+                System.out.println("en ultimo esta " + temp_j.nombre_usuario);
             }
-            if (lista_jugadores.ultimoNodo.siguienteNodo==lista_jugadores.primerNodo) {
+            if (lista_jugadores.ultimoNodo.siguienteNodo == lista_jugadores.primerNodo) {
                 System.out.println("si vuelta");
             }
-            if (lista_jugadores.primerNodo.siguienteNodo==lista_jugadores.ultimoNodo) {
+            if (lista_jugadores.primerNodo.siguienteNodo == lista_jugadores.ultimoNodo) {
                 System.out.println("si ultimo");
             }
             System.out.println("opcion 2");
             Boolean crear = lista_jugadores.validar(user);
-            System.out.println("tamaño "+lista_jugadores.getsize());
+            System.out.println("tamaño " + lista_jugadores.getsize());
             /*for (int i = 0; i < lista_jugadores.getsize(); i++) {
                 Jugadores temp_j = (Jugadores) lista_jugadores.nodoPosicion(i);
             System.out.println("opcion prueba "+temp_j.getNombre_usuario());
@@ -257,8 +258,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
                 Jugadores gamer = new Jugadores(user, 0, letras_j);
                 lista_jugadores.insertarAlFinal(gamer);
                 JOptionPane.showMessageDialog(null, "Usuario Creado");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario Ya Existe");
             }
         }
@@ -269,14 +269,23 @@ public class Form_Jugadores extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if (1 < lista_jugadores.tam) {
+            Random rand = new Random();
             Tablero tab = new Tablero();
             tab.diccionario = diccionario;
             tab.dim = dim;
             tab.lista_jugadores = lista_jugadores;
             tab.letras_cola = letras_cola;
             tab.m = m;
-        }
-        else{
+            tab.carga();
+            //rand.nextInt(letras.getsize() - 1)
+            int random = rand.nextInt(lista_jugadores.tam - 1);
+            System.out.println("posicion "+random + " Tamaño actual: "+lista_jugadores.tam );
+            Jugadores player = lista_jugadores.nodoPosicion(random);
+            JOptionPane.showMessageDialog(null, "Comienza la partida: "+player.getNombre_usuario());
+            System.out.println("posicion "+random);
+            tab.reload(player);
+            tab.setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null, "Como minimo 2 jugadores");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
