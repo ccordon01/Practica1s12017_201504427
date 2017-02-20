@@ -87,8 +87,38 @@ public class JavaApplication1 {
         }
         Random rand = new Random();
         System.out.println("size: "+(letras.getsize() - 1));
-        while(letras.getsize()>0){
-           System.out.println(letras.nodoPosicionKill(rand.nextInt(letras.getsize() - 1)) + " actual: " + letras.getsize()); 
+        while((letras.getsize()-1)>0){
+            String letter= letras.nodoPosicionKill(rand.nextInt(letras.getsize() - 1));
+           //System.out.println(letras.nodoPosicionKill(rand.nextInt(letras.getsize() - 1)) + " actual: " + letras.getsize()); 
+            if (letter.equalsIgnoreCase("t") || letter.equalsIgnoreCase("u") || letter.equalsIgnoreCase("r") || letter.equalsIgnoreCase("l") || letter.equalsIgnoreCase("n") || letter.equalsIgnoreCase("a") || letter.equalsIgnoreCase("e") || letter.equalsIgnoreCase("o") || letter.equalsIgnoreCase("i") || letter.equalsIgnoreCase("s")) {
+                System.out.println("Letra: "+ letter + " puntos: "+ 1  );
+                letras_cola.insertarAlFinal(new Letras(letter, 1));
+            }
+            else if (letter.equalsIgnoreCase("d") || letter.equalsIgnoreCase("g")) {
+                System.out.println("Letra: "+ letter + " puntos: "+ 2  );
+                letras_cola.insertarAlFinal(new Letras(letter, 2));
+            }
+            else if (letter.equalsIgnoreCase("c") || letter.equalsIgnoreCase("b") || letter.equalsIgnoreCase("m") || letter.equalsIgnoreCase("p")) {
+                System.out.println("Letra: "+ letter + " puntos: "+ 3  );
+                letras_cola.insertarAlFinal(new Letras(letter, 3));
+            }
+            else if (letter.equalsIgnoreCase("h") || letter.equalsIgnoreCase("f") || letter.equalsIgnoreCase("v") || letter.equalsIgnoreCase("y")) {
+                System.out.println("Letra: "+ letter + " puntos: "+ 4  );
+                letras_cola.insertarAlFinal(new Letras(letter, 4));
+            }
+            else if (letter.equalsIgnoreCase("q")) {
+                System.out.println("Letra: "+ letter + " puntos: "+ 5  );
+                letras_cola.insertarAlFinal(new Letras(letter, 5));
+            }
+            else if (letter.equalsIgnoreCase("j") || letter.equalsIgnoreCase("ñ") || letter.equalsIgnoreCase("x")) {
+                System.out.println("Letra: "+ letter + " puntos: "+ 8 );
+                letras_cola.insertarAlFinal(new Letras(letter, 8));
+            }
+            //else (letter.equalsIgnoreCase("c") || letter.equalsIgnoreCase("b") || letter.equalsIgnoreCase("m") || letter.equalsIgnoreCase("p")) {
+            else{    
+            System.out.println("Letra: "+ letter + " puntos: "+ 10  );
+                letras_cola.insertarAlFinal(new Letras(letter, 10));
+            }
         }
         if (m.primerNodo == null) {
             System.out.println("pise");
