@@ -26,7 +26,6 @@ public class JavaApplication1 {
         ListaSimple diccionario=xml.diccionario;
         ListaSimple letras=new ListaSimple();
         ListaCola letras_cola=new ListaCola();
-        
         for (int i = 0; i < xml.dimension; i++) {
             for (int j = 0; j < xml.dimension; j++) {
                 if (m.item(i, j) != null) {

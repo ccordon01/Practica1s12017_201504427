@@ -20,11 +20,12 @@ public class Tablero extends javax.swing.JFrame {
      */
     public Tablero() {
         initComponents();
-        int sizex = (int)(tablero_panel.getWidth()/10);
-        int sizey = (int) (tablero_panel.getHeight()/10);
+        int dim= 20;
+        int sizex = (int)(tablero_panel.getWidth()/dim);
+        int sizey = (int) (tablero_panel.getHeight()/dim);
         
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
                 JPanel tab = new JPanel();
                 tab.setBackground(Color.white);
                 tab.setBounds((sizex*i)+3,(sizey*j)+3, sizex - 5, sizey - 5);
