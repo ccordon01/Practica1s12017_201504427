@@ -19,7 +19,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
     ListaSimple diccionario = new ListaSimple();
     ListaSimple letras = new ListaSimple();
     ListaCola letras_cola = new ListaCola();
-
+    int dim;
     /**
      * Creates new form Form_Jugadores
      */
@@ -28,6 +28,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
         LeerXml xml = new LeerXml();
         xml.cargarXml();
         m = xml.m;
+        dim = xml.dimension;
         diccionario = xml.diccionario;
         for (int i = 0; i < xml.dimension; i++) {
             for (int j = 0; j < xml.dimension; j++) {
@@ -140,6 +141,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,6 +153,13 @@ public class Form_Jugadores extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Continuar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -172,6 +181,10 @@ public class Form_Jugadores extends javax.swing.JFrame {
                         .addGap(147, 147, 147)
                         .addComponent(jButton1)))
                 .addContainerGap(126, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +197,9 @@ public class Form_Jugadores extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton2)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,6 +266,21 @@ public class Form_Jugadores extends javax.swing.JFrame {
         jTextField1.setFocusable(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (1 < lista_jugadores.tam) {
+            Tablero tab = new Tablero();
+            tab.diccionario = diccionario;
+            tab.dim = dim;
+            tab.lista_jugadores = lista_jugadores;
+            tab.letras_cola = letras_cola;
+            tab.m = m;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Como minimo 2 jugadores");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,6 +318,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;

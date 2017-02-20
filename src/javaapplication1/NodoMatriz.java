@@ -13,12 +13,14 @@ import jdk.nashorn.internal.ir.TryNode;
  */
 public class NodoMatriz {
     Object datos;
+    Letras letra;
     NodoMatriz siguienteNodo;
     NodoMatriz superiorNodo;
     NodoMatriz anteriorNodo;
     NodoMatriz inferiorNodo;
     NodoMatriz(Object objeto) {
         this.datos = objeto;
+        this.letra = null;
         siguienteNodo = null;
         superiorNodo = null;
         anteriorNodo = null;
@@ -26,6 +28,7 @@ public class NodoMatriz {
     }
     NodoMatriz() {
         this.datos = 1;
+        this.letra = null;
         siguienteNodo = null;
         superiorNodo = null;
         anteriorNodo = null;

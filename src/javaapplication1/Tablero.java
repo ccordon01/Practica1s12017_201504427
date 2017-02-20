@@ -14,13 +14,19 @@ import javax.swing.JPanel;
  * @author Loscordonhdez
  */
 public class Tablero extends javax.swing.JFrame {
-
+    public ListaCircular lista_jugadores = new ListaCircular();
+    public Matriz m = new Matriz();
+    public ListaSimple diccionario = new ListaSimple();
+    public ListaSimple letras = new ListaSimple();
+    public ListaCola letras_cola = new ListaCola();
+    public int dim;
     /**
      * Creates new form Tablero
      */
     public Tablero() {
         initComponents();
-        int dim= 20;
+    }
+    public void carga(){
         int sizex = (int)(tablero_panel.getWidth()/dim);
         int sizey = (int) (tablero_panel.getHeight()/dim);
         
@@ -35,7 +41,6 @@ public class Tablero extends javax.swing.JFrame {
         
         tablero_panel.setBackground(new java.awt.Color(0,153,153));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
